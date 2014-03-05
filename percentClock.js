@@ -16,7 +16,7 @@ window.addEventListener('load', function load(){
 
 		// Leap Year
 		var year = newDate.getFullYear();
-		if(!(year % 4 != 0 || year % 100 == 0 && year % 400 != 0)){
+		if(((year % 4 == 0) && (year % 100 != 0)) || (year % 400 == 0)){
 			fullMonth[1] = 29;
 			fullYear = 31622400;
 		}
@@ -37,7 +37,7 @@ window.addEventListener('load', function load(){
 		var currentMonth = fullMonth[month];
 		currentMonth = currentMonth * fullDay;
 		var dayOfMonth = newDate.getDate();
-		dayOfMonth = dayOfMonth * fullDay + currentTime;
+		dayOfMonth = (dayOfMonth - 1) * fullDay + currentTime;
 
 		percentTime[0][1] = dayOfMonth / currentMonth;
 		percentTime[1][1] = monthNames[month];
@@ -53,8 +53,7 @@ window.addEventListener('load', function load(){
 		return percentTime;
 	}
 
-	function printTime(i){
-		percentTime = determineValues();
+	function printTime(i, percentTime){
 		thisTime = percentTime[0][i] * 100;
 		thisTime = thisTime.toFixed(2);
 		thisTime = thisTime + "%";
@@ -77,10 +76,8 @@ window.addEventListener('load', function load(){
 		j++;
 	}
 
-	function drawCanvas(i){
-		percentTime = determineValues();
-		thisPercentTime = [];
-
+	function drawCanvas(i, percentTime){
+		var thisPercentTime = [];
 		thisPercentTime[i] = percentTime[0][i] * 2;
 		context[i].beginPath();
 		context[i].clearRect(-100, -100, 200, 200);
@@ -88,16 +85,18 @@ window.addEventListener('load', function load(){
 		context[i].stroke();
 	}
 
-	function updateTime(){
+	function updateClock(){
+		percentTime = determineValues();
+
 		var i = 0;
 		while(i <= 2){
-			printTime(i);
-			drawCanvas(i);
+			printTime(i, percentTime);
+			drawCanvas(i, percentTime);
 			i++;
 		}
 	}
 
-	updateTime();
-	setInterval(updateTime, 1000);
+	updateClock();
+	setInterval(updateClock, 1000);
 
 }, true);
