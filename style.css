@@ -30,9 +30,9 @@ p {
 	margin: 0;
 }
 #dayText, #monthText, #yearText {
-	font-size: 18px;
+	font-size: 16px;
 	color: #333;
-	margin-top: 56px;
+	margin-top: 64px;
 }
 #dayTime, #monthTime, #yearTime {
 	font-size: 34px;
