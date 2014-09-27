@@ -113,5 +113,5 @@ window.addEventListener('load', function load()
 
 	updateClock();
 	setInterval(updateClock, 1000);
-
+console.log('test');
 }, true);
