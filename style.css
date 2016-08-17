@@ -1,6 +1,7 @@
 body {
 	background-color: #ccc;
 }
+
 .clock {
 	position: absolute;
 	left: 50%;
@@ -12,29 +13,36 @@ body {
 	border: 1px solid #333;
 	background-color: #fff;
 }
+
 #dayClock {
 	margin-left: -350px;
 }
+
 #monthClock {
 	margin-left: -100px;
 }
+
 #yearClock {
 	margin-left: 150px;
 }
+
 #dayCanvas, #monthCanvas, #yearCanvas {
 	position: absolute;
 }
+
 p {
 	text-align: center;
 	font-family: sans-serif;
 	margin: 0;
 }
+
 #dayText, #monthText, #yearText {
 	font-size: 16px;
 	color: #333;
 	margin-top: 58px;
 	line-height: 24px;
 }
+
 #dayTime, #monthTime, #yearTime {
 	font-size: 34px;
 	color: #555;
