@@ -34,23 +34,6 @@ window.addEventListener('load', function load() {
         }
     }
 
-    function printTime(i, percentTime) {
-        var thisTime   = (percentTime[0][i] * 100).toFixed(2) + '%',
-            time       = document.getElementById(clocks[i] + 'Time'),
-            text       = document.getElementById(clocks[i] + 'Text').getElementsByTagName('span')[0];
-        time.innerHTML = thisTime;
-        text.innerHTML = percentTime[1][i];
-    }
-
-    function drawCanvas(i, percentTime) {
-        var thisPercentTime = [];
-        thisPercentTime[i]  = percentTime[0][i] * 2;
-        context[i].beginPath();
-        context[i].clearRect(-100, -100, 200, 200);
-        context[i].arc(0, 0, 90, 0, thisPercentTime[i] * Math.PI);
-        context[i].stroke();
-    }
-
     function determineValues() {
         var newDate     = new Date(),
             year        = newDate.getFullYear(),
@@ -87,6 +70,23 @@ window.addEventListener('load', function load() {
         percentTime[1][2] = year;
 
         return percentTime;
+    }
+
+    function printTime(i, percentTime) {
+        var thisTime   = (percentTime[0][i] * 100).toFixed(2) + '%',
+            time       = document.getElementById(clocks[i] + 'Time'),
+            text       = document.getElementById(clocks[i] + 'Text').getElementsByTagName('span')[0];
+        time.innerHTML = thisTime;
+        text.innerHTML = percentTime[1][i];
+    }
+
+    function drawCanvas(i, percentTime) {
+        var thisPercentTime = [];
+        thisPercentTime[i]  = percentTime[0][i] * 2;
+        context[i].beginPath();
+        context[i].clearRect(-100, -100, 200, 200);
+        context[i].arc(0, 0, 90, 0, thisPercentTime[i] * Math.PI);
+        context[i].stroke();
     }
 
 }, true);
