@@ -1,50 +1,67 @@
 body {
-    background-color: #ccc;
+    background-color : #ccc;
 }
 
 .clock {
-    position: absolute;
-    left: 50%;
-    top: 50%;
-    width: 200px;
-    height: 200px;
-    margin-top: -100px;
-    border-radius: 100%;
-    border: 1px solid #333;
-    background-color: #fff;
+    position         : absolute;
+    left             : 50%;
+    top              : 50%;
+    width            : 200px;
+    height           : 200px;
+    margin-top       : -100px;
+    border-radius    : 100%;
+    border           : 1px solid #333;
+    background-color : #fff;
 }
 
 #dayClock {
-    margin-left: -350px;
+    margin-left      : -350px;
 }
 
 #monthClock {
-    margin-left: -100px;
+    margin-left      : -100px;
 }
 
 #yearClock {
-    margin-left: 150px;
+    margin-left      : 150px;
 }
 
-#dayCanvas, #monthCanvas, #yearCanvas {
-    position: absolute;
+@media only screen and (max-width: 720px) {
+    #dayClock {
+        margin-left  : -100px;
+        margin-top   : -350px;
+    }
+
+    #monthClock {
+        margin-left  : -100px;
+        margin-top   : -100px;
+    }
+
+    #yearClock {
+        margin-left  : -100px;
+        margin-top   : 150px;
+    }
+}
+
+canvas {
+    position         : absolute;
 }
 
 p {
-    text-align: center;
-    font-family: sans-serif;
-    margin: 0;
+    text-align       : center;
+    font-family      : sans-serif;
+    margin           : 0;
 }
 
 #dayText, #monthText, #yearText {
-    font-size: 16px;
-    color: #333;
-    margin-top: 58px;
-    line-height: 24px;
+    font-size        : 16px;
+    color            : #333;
+    margin-top       : 58px;
+    line-height      : 24px;
 }
 
 #dayTime, #monthTime, #yearTime {
-    font-size: 34px;
-    color: #555;
-    line-height: 42px;
+    font-size        : 34px;
+    color            : #555;
+    line-height      : 42px;
 }
