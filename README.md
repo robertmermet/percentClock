@@ -1,7 +1,7 @@
 # Percent Clock
 
-displays the percentage of time elapsed today, this month and this year.
+Displays the percentage of time elapsed today, this month and this year.
 
-    git clone git@github.com:robertmermet/percentclock.git
+    git clone git@github.com:robertmermet/PercentClock.git
 
->**demo** [robertmermet.com/projects/percentclock](http://robertmermet.com/projects/percentclock)
+>**demo** [robertmermet.com/projects/PercentClock](http://robertmermet.com/projects/PercentClock)
