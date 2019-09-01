@@ -1,22 +1,20 @@
 window.addEventListener('load', function load() {
     window.removeEventListener('load', load, false);
 
-    var fullDay    = 86400,
+    let fullDay    = 86400,
         fullMonth  = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31],
         fullYear   = 31536000,
         dayNames   = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'],
         monthNames = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'],
         clocks     = ['day', 'month', 'year'],
         canvas     = [],
-        context    = [],
-        j          = 0;
+        context    = [];
 
-    while (j <= 2) {
-        canvas[j]  = document.getElementById( clocks[j] + 'Canvas');
-        context[j] = canvas[j].getContext('2d');
-        context[j].translate(100, 100);
-        context[j].rotate(-90 * Math.PI / 180);
-        j++;
+    for (let i = 0; i <= 2; i++) {
+        canvas[i]  = document.getElementById( clocks[i] + 'Canvas');
+        context[i] = canvas[i].getContext('2d');
+        context[i].translate(100, 100);
+        context[i].rotate(-90 * Math.PI / 180);
     }
 
     (function drawFrame() {
@@ -25,17 +23,15 @@ window.addEventListener('load', function load() {
     })();
 
     function updateClock() {
-        var i = 0;
         percentTime = determineValues();
-        while (i <= 2) {
+        for (let i = 0; i <= 2; i++) {
             printTime(i, percentTime);
             drawCanvas(i, percentTime);
-            i++;
         }
     }
 
     function determineValues() {
-        var newDate     = new Date(),
+        let newDate     = new Date(),
             year        = newDate.getFullYear(),
             month       = newDate.getMonth(),
             hours       = newDate.getHours() * 60 * 60,
@@ -62,7 +58,7 @@ window.addEventListener('load', function load() {
         percentTime[1][1] = monthNames[month];
         dayOfYear         = dayOfMonth;
 
-        for (var i = 0; i <= (month - 1); i++) {
+        for (let i = 0; i <= (month - 1); i++) {
             dayOfYear = dayOfYear + fullMonth[i] * fullDay;
         }
 
@@ -73,7 +69,7 @@ window.addEventListener('load', function load() {
     }
 
     function printTime(i, percentTime) {
-        var thisTime   = (percentTime[0][i] * 100).toFixed(2) + '%',
+        let thisTime   = (percentTime[0][i] * 100).toFixed(2) + '%',
             time       = document.getElementById(clocks[i] + 'Time'),
             text       = document.getElementById(clocks[i] + 'Text').getElementsByTagName('span')[0];
         time.innerHTML = thisTime;
@@ -81,7 +77,7 @@ window.addEventListener('load', function load() {
     }
 
     function drawCanvas(i, percentTime) {
-        var thisPercentTime = [];
+        let thisPercentTime = [];
         thisPercentTime[i]  = percentTime[0][i] * 2;
         context[i].beginPath();
         context[i].clearRect(-100, -100, 200, 200);
