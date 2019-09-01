@@ -77,11 +77,33 @@ window.addEventListener('load', function load() {
     }
 
     function drawCanvas(i, percentTime) {
-        let thisPercentTime = [];
-        thisPercentTime[i]  = percentTime[0][i] * 2;
-        context[i].beginPath();
         context[i].clearRect(-100, -100, 200, 200);
-        context[i].arc(0, 0, 90, 0, thisPercentTime[i] * Math.PI);
+        // Draw 12 indices
+        for (let j = 0; j < 12; j++) {
+            if (j == 0 || j % 3 == 0) {
+                context[i].lineWidth = 2;
+            } else {
+                context[i].lineWidth = 1;
+            }
+            context[i].beginPath();
+            let angle = j * Math.PI / 6;
+            context[i].rotate(angle);
+            context[i].moveTo((context[i].lineWidth == 2) ? 72 : 76, 0);
+            context[i].lineTo(90, 0);
+            context[i].stroke();
+            context[i].rotate(-angle);
+        }
+        // Draw 48 circles
+        for (let j = 0; j < 48; j++) {
+            context[i].beginPath();
+            let angle = j * Math.PI / 24;
+            context[i].rotate(angle);
+            context[i].arc(95, 0, (j == 0 || j % 4 == 0) ? 1 : .5, 0, 2 * Math.PI);
+            context[i].fill();;
+            context[i].rotate(-angle);
+        }
+        context[i].beginPath();
+        context[i].arc(0, 0, 90, 0, (percentTime[0][i] * 2) * Math.PI);
         context[i].stroke();
     }
 
