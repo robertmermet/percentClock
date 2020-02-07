@@ -93,12 +93,12 @@ window.addEventListener('load', function load() {
             context[i].stroke();
             context[i].rotate(-angle);
         }
-        // Draw 48 circles
-        for (let j = 0; j < 48; j++) {
+        // Draw 60 circles
+        for (let j = 0; j < 60; j++) {
             context[i].beginPath();
-            let angle = j * Math.PI / 24;
+            let angle = j * Math.PI / 30;
             context[i].rotate(angle);
-            context[i].arc(95, 0, (j == 0 || j % 4 == 0) ? 1 : .5, 0, 2 * Math.PI);
+            context[i].arc(95, 0, (j == 0 || j % 5 == 0) ? 1 : .5, 0, 2 * Math.PI);
             context[i].fill();;
             context[i].rotate(-angle);
         }
