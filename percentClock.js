@@ -78,6 +78,16 @@ window.addEventListener('load', function load() {
 
     function drawCanvas(i, percentTime) {
         context[i].clearRect(-100, -100, 200, 200);
+        // Draw elapsed time
+        context[i].fillStyle = '#eee';
+        context[i].beginPath();
+        context[i].moveTo(0, 0);
+        context[i].arc(0, 0, 100, 0, (percentTime[0][i] * 2) * Math.PI);
+        context[i].fill();
+        context[i].fillStyle = '#000';
+        context[i].beginPath();
+        context[i].arc(0, 0, 90, 0, (percentTime[0][i] * 2) * Math.PI);
+        context[i].stroke();
         // Draw 12 indices
         for (let j = 0; j < 12; j++) {
             if (j == 0 || j % 3 == 0) {
@@ -88,7 +98,7 @@ window.addEventListener('load', function load() {
             context[i].beginPath();
             let angle = j * Math.PI / 6;
             context[i].rotate(angle);
-            context[i].moveTo((context[i].lineWidth == 2) ? 72 : 76, 0);
+            context[i].moveTo((context[i].lineWidth == 2) ? 70 : 76, 0);
             context[i].lineTo(90, 0);
             context[i].stroke();
             context[i].rotate(-angle);
@@ -102,9 +112,6 @@ window.addEventListener('load', function load() {
             context[i].fill();;
             context[i].rotate(-angle);
         }
-        context[i].beginPath();
-        context[i].arc(0, 0, 90, 0, (percentTime[0][i] * 2) * Math.PI);
-        context[i].stroke();
     }
 
 }, true);
