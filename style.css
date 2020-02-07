@@ -62,8 +62,8 @@ span {
 #dayText, #monthText, #yearText {
     font-size        : 12px;
     color            : #333;
-    margin-top       : 54px;
-    line-height      : 30px;
+    margin-top       : 58px;
+    line-height      : 27px;
     letter-spacing   : 0.6px;
 }
 
